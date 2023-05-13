@@ -1,4 +1,15 @@
 import { Check } from "@phosphor-icons/react";
+import * as Checkbox from "@radix-ui/react-checkbox";
+
+const evailableWeekdays = [
+  { weekday: "Domingo", key: 0 },
+  { weekday: "Segunda-feira", key: 1 },
+  { weekday: "Terça-feira", key: 2 },
+  { weekday: "Quarta-feira", key: 3 },
+  { weekday: "Quinta-feira", key: 4 },
+  { weekday: "Sexta-feira", key: 5 },
+  { weekday: "Sábado", key: 6 },
+];
 
 export function NewHabitForm() {
   return (
@@ -6,7 +17,6 @@ export function NewHabitForm() {
       <label htmlFor="title" className="font-semibold leading-tight">
         Qual seu comprotimento?
       </label>
-
       <input
         type="text"
         id="title"
@@ -14,10 +24,22 @@ export function NewHabitForm() {
         className="p-4 rounded-lg mt-3 bg-zinc-800 text-white placeholder:text-zinc-400"
         autoFocus
       />
-
       <label htmlFor="" className="font-semibold leading-tight mt-4">
         Qual a recorrência
       </label>
+
+      <div className="mt-6 flex flex-col gap-3">
+        {evailableWeekdays.map(({ weekday, key }) => (
+          <Checkbox.Root key={key} className="flex items-center gap-3 group">
+            <div className="h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800 group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-500">
+              <Checkbox.Indicator>
+                <Check size={20} className="text-white" />
+              </Checkbox.Indicator>
+            </div>
+            <span className=" text-white leading-tight">{weekday}</span>
+          </Checkbox.Root>
+        ))}
+      </div>
 
       <button
         type="submit"
