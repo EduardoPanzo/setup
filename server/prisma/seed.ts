@@ -98,7 +98,7 @@ async function run() {
         /** Wednesday */
         date: new Date("2023-01-04T03:00:00.000z"),
         dayHabits: {
-          create: [{ habit_id: secondHabitId }],
+          create: { habit_id: secondHabitId },
         },
       },
     }),
